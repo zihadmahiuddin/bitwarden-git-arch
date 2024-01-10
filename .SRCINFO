@@ -1,6 +1,6 @@
 pkgbase = bitwarden
 	pkgdesc = A secure and free password manager for all of your devices
-	pkgver = 2023.12.1
+	pkgver = 2024.1.0
 	pkgrel = 1
 	url = https://github.com/bitwarden/clients/tree/master/apps/desktop
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = bitwarden
 	makedepends = nodejs-lts-hydrogen
 	makedepends = jq
 	makedepends = rust
-	depends = electron25
+	depends = electron27
 	depends = libnotify
 	depends = libsecret
 	depends = libxtst
 	depends = libxss
 	depends = libnss_nis
-	source = bitwarden::git+https://github.com/bitwarden/clients.git#tag=desktop-v2023.12.1
+	source = bitwarden::git+https://github.com/bitwarden/clients.git#tag=desktop-v2024.1.0
 	source = messaging.main.ts.patch
 	source = nativelib.patch
 	source = bitwarden.sh
