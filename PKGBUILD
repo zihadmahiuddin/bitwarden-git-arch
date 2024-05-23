@@ -9,7 +9,7 @@ pkgdesc='A secure and free password manager for all of your devices'
 arch=('x86_64')
 url='https://github.com/bitwarden/clients/tree/master/apps/desktop'
 license=('GPL3')
-depends=("electron$_electronversion" 'libnotify' 'libsecret' 'libxtst' 'libxss' 'libnss_nis')
+depends=("electron$_electronversion" 'libnotify' 'libsecret' 'org.freedesktop.secrets' 'libxtst' 'libxss' 'libnss_nis')
 makedepends=('git' 'npm' 'python' 'python-setuptools' 'node-gyp' 'nodejs-lts-hydrogen' 'jq' 'rust')
 source=(bitwarden::git+https://github.com/bitwarden/clients.git#tag=desktop-v$pkgver
         messaging.main.ts.patch
