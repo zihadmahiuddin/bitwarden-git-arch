@@ -1,6 +1,6 @@
 pkgbase = bitwarden
 	pkgdesc = A secure and free password manager for all of your devices
-	pkgver = 2024.5.0
+	pkgver = 2024.6.2
 	pkgrel = 1
 	url = https://github.com/bitwarden/clients/tree/master/apps/desktop
 	arch = x86_64
@@ -10,22 +10,22 @@ pkgbase = bitwarden
 	makedepends = python
 	makedepends = python-setuptools
 	makedepends = node-gyp
-	makedepends = nodejs-lts-hydrogen
+	makedepends = nodejs-lts-iron
 	makedepends = jq
 	makedepends = rust
-	depends = electron28
+	depends = electron29
 	depends = libnotify
 	depends = libsecret
 	depends = org.freedesktop.secrets
 	depends = libxtst
 	depends = libxss
 	depends = libnss_nis
-	source = bitwarden::git+https://github.com/bitwarden/clients.git#tag=desktop-v2024.5.0
+	source = bitwarden::git+https://github.com/bitwarden/clients.git#tag=desktop-v2024.6.2
 	source = messaging.main.ts.patch
 	source = nativelib.patch
 	source = bitwarden.sh
 	source = bitwarden.desktop
-	sha512sums = f3150c1b7a3b5b4c01b334eb6b73536da2a01868a332b264747b76f173cd9417e18351c4abf18e2232917a0cacc7bdbeaa99d1be097e510c8b015e94ae7af7d6
+	sha512sums = 57cc5bcf4dad49106fcb3296312b051687d30e259cfa4199ca8cdad7ba7c21e60baabeba2ad201bdaf9e59d547927b4eeacc455dd5ced2b962599b24be6f69c1
 	sha512sums = babcae0dba4d036e5d2cd04d8932b63253bc7b27b14d090932066e9d39383f7565c06d72dae9f96e741b494ef7e50a1fe7ec33905aa3124b427a8bf404df5762
 	sha512sums = 88610cba9dea99aefdfea51139f5770f04f1e877d75e86f2eea3470c99880282c5ff91060cb08d92cdf00d0a1b3bd40c5f3ee887cee11946dd31ca06da978272
 	sha512sums = 98d2860bef2283fd09710fbbc5362d7ef2cd8eca26f35805ea258f2dacba78bd6aab14c834388a5089a8150eb0f32a82577aab10f8ad68e1a6371959b2802ad4
