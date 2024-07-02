@@ -2,7 +2,7 @@
 # Contributor: libertylocked <libertylocked@disroot.org>
 
 pkgname=bitwarden
-pkgver=2024.6.2
+pkgver=2024.6.4
 pkgrel=1
 _electronversion=29
 pkgdesc='A secure and free password manager for all of your devices'
@@ -16,7 +16,7 @@ source=(bitwarden::git+https://github.com/bitwarden/clients.git#tag=desktop-v$pk
         nativelib.patch
         ${pkgname}.sh
         ${pkgname}.desktop)
-sha512sums=('57cc5bcf4dad49106fcb3296312b051687d30e259cfa4199ca8cdad7ba7c21e60baabeba2ad201bdaf9e59d547927b4eeacc455dd5ced2b962599b24be6f69c1'
+sha512sums=('03e855133bce7eabc530b2b3f0ae54b90d73024a3f7c6beef40137c926591f1032155b56a80da089fe8b4a4360168f990521c5ffd3b9b6e0e5d5b625487b67a6'
             'babcae0dba4d036e5d2cd04d8932b63253bc7b27b14d090932066e9d39383f7565c06d72dae9f96e741b494ef7e50a1fe7ec33905aa3124b427a8bf404df5762'
             '88610cba9dea99aefdfea51139f5770f04f1e877d75e86f2eea3470c99880282c5ff91060cb08d92cdf00d0a1b3bd40c5f3ee887cee11946dd31ca06da978272'
             '98d2860bef2283fd09710fbbc5362d7ef2cd8eca26f35805ea258f2dacba78bd6aab14c834388a5089a8150eb0f32a82577aab10f8ad68e1a6371959b2802ad4'
@@ -42,7 +42,7 @@ prepare() {
 	   > package.json.patched
 	mv package.json.patched package.json
 	patch --strip=1 apps/desktop/desktop_native/index.js "$srcdir/nativelib.patch"
-	npm ci
+	npm install
 }
 
 build() {
