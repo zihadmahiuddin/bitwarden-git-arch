@@ -2,9 +2,9 @@
 # Contributor: libertylocked <libertylocked@disroot.org>
 
 pkgname=bitwarden
-pkgver=2024.6.4
+pkgver=2024.7.1
 pkgrel=1
-_electronversion=29
+_electronversion=31
 pkgdesc='A secure and free password manager for all of your devices'
 arch=('x86_64')
 url='https://github.com/bitwarden/clients/tree/master/apps/desktop'
@@ -16,9 +16,9 @@ source=(bitwarden::git+https://github.com/bitwarden/clients.git#tag=desktop-v$pk
         nativelib.patch
         ${pkgname}.sh
         ${pkgname}.desktop)
-sha512sums=('03e855133bce7eabc530b2b3f0ae54b90d73024a3f7c6beef40137c926591f1032155b56a80da089fe8b4a4360168f990521c5ffd3b9b6e0e5d5b625487b67a6'
+sha512sums=('85a7bb87945a7807a61b7c0e912a2f430e0829af1c3552eaff087e1b82ee4a22a6c1afa464974d76f94255ae011ccf7682a082029d7e776ca66015947b3adff7'
             'babcae0dba4d036e5d2cd04d8932b63253bc7b27b14d090932066e9d39383f7565c06d72dae9f96e741b494ef7e50a1fe7ec33905aa3124b427a8bf404df5762'
-            '88610cba9dea99aefdfea51139f5770f04f1e877d75e86f2eea3470c99880282c5ff91060cb08d92cdf00d0a1b3bd40c5f3ee887cee11946dd31ca06da978272'
+            'd2ca6c5fa428a74d463e21573ad0dae626eaec14d8318228320967d59760a86a641369880b79aa637fb1572c49b9c9f8c7cdfe9738be5a4bc9118249576311a2'
             '98d2860bef2283fd09710fbbc5362d7ef2cd8eca26f35805ea258f2dacba78bd6aab14c834388a5089a8150eb0f32a82577aab10f8ad68e1a6371959b2802ad4'
             'fdc047aadc1cb947209d7ae999d8a7f5f10ae46bf71687080bc13bc3082cc5166bbbe88c8f506b78adb5d772f5366ec671b04a2f761e7d7f249ebe5726681e30')
 
@@ -41,7 +41,7 @@ prepare() {
 	   '.devDependencies["electron"]=$ENV.SYSTEM_ELECTRON_VERSION' \
 	   > package.json.patched
 	mv package.json.patched package.json
-	patch --strip=1 apps/desktop/desktop_native/index.js "$srcdir/nativelib.patch"
+	patch --strip=1 apps/desktop/desktop_native/napi/index.js "$srcdir/nativelib.patch"
 	npm install
 }
 
@@ -52,7 +52,8 @@ build() {
 	export npm_config_build_from_source=true
 	export npm_config_cache="$srcdir/npm_cache"
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	pushd desktop_native/
+    export CXXFLAGS="$CXXFLAGS -Wno-error"
+	pushd desktop_native/napi
 	npm run build
 	popd
 	npm run build
