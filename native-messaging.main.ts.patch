@@ -1,13 +1,30 @@
-diff --git i/apps/desktop/src/main/native-messaging.main.ts w/apps/desktop/src/main/native-messaging.main.ts
-index 8c8404578b..7d3534dae8 100644
---- i/apps/desktop/src/main/native-messaging.main.ts
-+++ w/apps/desktop/src/main/native-messaging.main.ts
-@@ -335,7 +335,7 @@ export class NativeMessagingMain {
-       return path.join(path.dirname(this.exePath), "resources", "native-messaging.bat");
-     }
+--- bitwarden-2024.10.0/apps/desktop/src/main/native-messaging.main.ts.orig	2024-10-17 21:45:41.000000000 +0200
++++ bitwarden-2024.10.0/apps/desktop/src/main/native-messaging.main.ts	2024-10-25 22:25:27.180541673 +0200
+@@ -328,26 +328,7 @@ export class NativeMessagingMain {
+   }
  
--    return this.exePath;
-+    return "/usr/bin/bitwarden-desktop";
+   private binaryPath() {
+-    const ext = process.platform === "win32" ? ".exe" : "";
+-
+-    if (isDev()) {
+-      const devPath = path.join(
+-        this.appPath,
+-        "..",
+-        "desktop_native",
+-        "target",
+-        "debug",
+-        `desktop_proxy${ext}`,
+-      );
+-
+-      // isDev() returns true when using a production build with ELECTRON_IS_DEV=1,
+-      // so we need to fall back to the prod binary if the dev binary doesn't exist.
+-      if (existsSync(devPath)) {
+-        return devPath;
+-      }
+-    }
+-
+-    return path.join(path.dirname(this.exePath), `desktop_proxy${ext}`);
++    return '/usr/lib/bitwarden/desktop_proxy'
    }
  
    private getRegeditInstance() {

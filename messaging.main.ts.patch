@@ -1,5 +1,5 @@
---- messaging.main.ts.orig	2022-02-11 15:39:49.768671680 +0300
-+++ messaging.main.ts	2022-02-11 15:42:22.326127915 +0300
+--- i/apps/desktop/src/main/messaging.main.ts	2022-02-11 15:39:49.768671680 +0300
++++ w/apps/desktop/src/main/messaging.main.ts	2022-02-11 15:42:22.326127915 +0300
 @@ -114,7 +114,7 @@
  Version=${app.getVersion()}
  Name=Bitwarden
