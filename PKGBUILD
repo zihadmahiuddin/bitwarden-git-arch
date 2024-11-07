@@ -10,7 +10,7 @@ arch=('x86_64')
 url='https://github.com/bitwarden/clients/tree/master/apps/desktop'
 license=('GPL-3.0-only')
 depends=("electron$_electronversion" 'libnotify' 'libsecret' 'org.freedesktop.secrets' 'libxtst' 'libxss' 'libnss_nis' 'argon2')
-makedepends=('git' 'npm' 'python' 'python-setuptools' 'node-gyp' 'nodejs-lts-iron' 'jq' 'rust')
+makedepends=('git' 'npm' 'python' 'python-setuptools' 'node-gyp' 'nodejs-lts-iron' 'jq' 'rust' 'fdupes')
 source=(bitwarden::git+https://github.com/bitwarden/clients.git#tag=desktop-v$pkgver
         messaging.main.ts.patch
         nativelib.patch
@@ -78,6 +78,52 @@ RUSTFLAGS="$RUSTFLAGS -Crelocation-model=pie" cargo rustc --release --package de
 	npm run build
 	npm run clean:dist
 	mv -v desktop_native/target/release/desktop_proxy build/desktop_proxy
+	rm -fv ../../node_modules/argon2/build-tmp-napi-v3/node_gyp_bins/python3
+	fdupes build
+	pushd build
+	#JS debug symbols (unusable)
+	find -name '*.map' -type f -print -delete
+	#Source code
+	find -name '*.c' -type f -print -delete
+	find -name '*.cpp' -type f -print -delete
+	find -name '*.h' -type f -print -delete
+	find -name '*.gyp' -type f -print -delete
+	find -name '*.gypi' -type f -print -delete
+	find -name '*.ts' -type f -print -delete
+	find -name '*.cts' -type f -print -delete
+	find -name build-tmp-napi-v3  -print0 |xargs -r0 -- rm -rvf --
+	find -name src -print0 |xargs -r0 -- rm -rvf --
+	find -name Makefile -type f -print -delete
+	find -name 'Pipfile*' -type f -print -delete
+	find -name '*.patch' -type f -print -delete
+	#Temporary build files
+	find -name '.deps' -print0 |xargs -r0 -- rm -rvf --
+	find -name 'obj.target' -print0 |xargs -r0 -- rm -rvf --
+	find -name 'vendor' -print0 |xargs -r0 -- rm -rvf --
+	find -name '*package-lock.json' -type f -print -delete
+	find -name '*.mk' -type f -print -delete
+	find -name '*.Makefile' -type f -print -delete
+
+	#Documentation
+	find -name '*.md' -type f -print -delete
+	find -name doc -print0 |xargs -r0 -- rm -rvf --
+	find -name test -print0 |xargs -r0 -- rm -rvf --
+	#Compile-time-only dependencies
+	find -name nan -print0 |xargs -r0 -- rm -rvf --
+	find -name node-addon-api -print0 |xargs -r0 -- rm -rvf --
+	#Other trash
+	find -name '*.yml' -type f -print -delete
+	find -name '.npmignore' -type f -print -delete
+	find -name '.gitignore' -type f -print -delete
+
+	#Fix file mode
+	find . -type f -exec chmod 644 {} \;
+	find . -name '*.node' -exec chmod 755 {} \;
+	chmod 755 desktop_proxy
+
+	# Remove empty directories
+	find . -type d -empty -print -delete
+	popd
 	npm exec -c "electron-builder --linux --x64 --dir -c.electronDist=$electronDist \
 	             -c.electronVersion=$electronVer"
 }
