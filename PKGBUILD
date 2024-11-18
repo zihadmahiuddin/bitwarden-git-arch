@@ -2,7 +2,7 @@
 # Contributor: libertylocked <libertylocked@disroot.org>
 
 pkgname=bitwarden
-pkgver=2024.10.2
+pkgver=2024.11.1
 pkgrel=1
 _electronversion=32
 pkgdesc='A secure and free password manager for all of your devices'
@@ -21,14 +21,14 @@ source=(bitwarden::git+https://github.com/bitwarden/clients.git#tag=desktop-v$pk
         remove-unnecessary-deps.patch
         ${pkgname}.sh
         ${pkgname}.desktop)
-sha512sums=('d5d40a0058ca45cd3d923c6de50e1ec625c80eaa84a482683b68cbcd6cca043d2d674be804f57e22e1809a5ca0663dfaa646a36ec92a46c1cfde9e5f457009ca'
+sha512sums=('c2b64d23930eeaab594ddb59d1cf4c525f4728a6d7421d1109cae52a4db8d5d75bbc262f53ace52a6ba2c45e02c3f9f7ede4464aad09b9b306dc39772495e73e'
             '759db11cae26b8228000c98eb7bd21d0a46c964a858d27655f8f09114f5f7cba856623c3cad07424ba360e74144d9c0c050ee7219f8fe530cd9059d9f937f023'
             '0052ff95c0736eaa1f1b0790a65a9a935010b776e0b0d52ecf3ceb2c774277178872da1b6250a9189217fec4b4a64b9a4d30b129cc86c8a963228bba8723e27a'
             'f12482139463c6f471b49f789cd7f7e1748ecd06e169e5519edb29d762f456b9050871043336f98595b1cf15d99206bcad41f92a7145beb67c154e2a01e4c740'
             '56089fc612978e5f08c9745fb8a495eca719e744f99a711e7e1d0c5a3874f946da3d7f4174b340160bf8160a35bc2aa903fa64a3ba5bcc76088fdd407a97a10d'
-            'df60305a0fec1ac296f2df21e195545ae7134bd50b17093447c2648670868d820d0b5e2b1def12814eb5c87f95a2dfcfd665749d2e4925b48ec61707e11e1b6f'
+            '6970261c24d8056b001f4ff308af7b9be67ef638be28f54f7c08ee4bed9ad895145a6cedf9a3cbda61b023104c50a6758a8bfcc8bc40097a298b98b60b1ffee7'
             '38ed719345ec0d5156a8fd9f2e4fadd836ae2179d5737c4b434b5062e8a7333d1c1fe4a89dada673ae4ae5d70cc1879bd8d84831edc178f08ab72117be432848'
-            '89f2b4d07b2db4de837cf959667ce883bd775a9d7eaa013342fe942e21ce2248a24c1f5acd253ce40a69bcef46c1c0dabcfb069dc89f25b7aa1d8ae8c795d1d7'
+            'd5014d0e2392d7d192985593e0676969171762beb09c70aa5d259d3ba9549305769a6b21d3ecb4971e9fb5e188b2bc39dcc6e940d4363362550f560b51994747'
             '09acb1f4a7fb04fda120eda79ee847f285a421bc5bf5c3d42c78767f01f2051984b928019707c7c59e48e87728ab45ee2a98ff7ccee6b4e14bfdff93cd1106f0'
             'fdc047aadc1cb947209d7ae999d8a7f5f10ae46bf71687080bc13bc3082cc5166bbbe88c8f506b78adb5d772f5366ec671b04a2f761e7d7f249ebe5726681e30')
 
@@ -58,7 +58,7 @@ prepare() {
 	patch -p1 -i "$srcdir/no-sourcemaps.patch"
 	patch -p1 -i "$srcdir/remove-argon2-browser.patch"
 	patch -p1 -i "$srcdir/remove-unnecessary-deps.patch"
-	npm install
+	npm ci
 	patch -p1 -i "$srcdir/system-libargon2.patch"
 }
 
@@ -72,7 +72,7 @@ build() {
 	export CXXFLAGS="$CXXFLAGS -Wno-error"
 	pushd desktop_native
 	cargo rustc --release --package desktop_napi --lib --crate-type cdylib
-RUSTFLAGS="$RUSTFLAGS -Crelocation-model=pie" cargo rustc --release --package desktop_proxy --bin desktop_proxy
+	RUSTFLAGS="$RUSTFLAGS -Crelocation-model=pie" cargo rustc --release --package desktop_proxy --bin desktop_proxy
 	mv -v target/release/*.so napi/desktop_napi.node
 	popd
 	npm run build
