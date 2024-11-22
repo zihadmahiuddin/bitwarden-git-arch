@@ -2,7 +2,7 @@
 # Contributor: libertylocked <libertylocked@disroot.org>
 
 pkgname=bitwarden
-pkgver=2024.11.1
+pkgver=2024.11.2
 pkgrel=1
 _electronversion=32
 pkgdesc='A secure and free password manager for all of your devices'
@@ -21,7 +21,7 @@ source=(bitwarden::git+https://github.com/bitwarden/clients.git#tag=desktop-v$pk
         remove-unnecessary-deps.patch
         ${pkgname}.sh
         ${pkgname}.desktop)
-sha512sums=('c2b64d23930eeaab594ddb59d1cf4c525f4728a6d7421d1109cae52a4db8d5d75bbc262f53ace52a6ba2c45e02c3f9f7ede4464aad09b9b306dc39772495e73e'
+sha512sums=('988f4bc97b675c75a270d04b4027ce6e955eab59515fcbf69ed4135a9cf916d2fbeed5215cfa7fa2bc4c0b749b52ed93a4500d00d5a9a270340a7fe694dba376'
             '759db11cae26b8228000c98eb7bd21d0a46c964a858d27655f8f09114f5f7cba856623c3cad07424ba360e74144d9c0c050ee7219f8fe530cd9059d9f937f023'
             '0052ff95c0736eaa1f1b0790a65a9a935010b776e0b0d52ecf3ceb2c774277178872da1b6250a9189217fec4b4a64b9a4d30b129cc86c8a963228bba8723e27a'
             'f12482139463c6f471b49f789cd7f7e1748ecd06e169e5519edb29d762f456b9050871043336f98595b1cf15d99206bcad41f92a7145beb67c154e2a01e4c740'
