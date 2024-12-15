@@ -1,6 +1,6 @@
 pkgbase = bitwarden
 	pkgdesc = A secure and free password manager for all of your devices
-	pkgver = 2024.11.2
+	pkgver = 2024.12.0
 	pkgrel = 1
 	url = https://github.com/bitwarden/clients/tree/master/apps/desktop
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = bitwarden
 	depends = libxss
 	depends = libnss_nis
 	depends = argon2
-	source = bitwarden::git+https://github.com/bitwarden/clients.git#tag=desktop-v2024.11.2
+	source = bitwarden::git+https://github.com/bitwarden/clients.git#tag=desktop-v2024.12.0
 	source = messaging.main.ts.patch
 	source = nativelib.patch
 	source = native-messaging.main.ts.patch
@@ -32,14 +32,14 @@ pkgbase = bitwarden
 	source = remove-unnecessary-deps.patch
 	source = bitwarden.sh
 	source = bitwarden.desktop
-	sha512sums = 988f4bc97b675c75a270d04b4027ce6e955eab59515fcbf69ed4135a9cf916d2fbeed5215cfa7fa2bc4c0b749b52ed93a4500d00d5a9a270340a7fe694dba376
+	sha512sums = 499d113b2319730207c2bf8748d92ddee154f1375673d23e0856cfa25f7e621f3b72c8db966b3e2e316b98b89766d22c93876ed6b98f400b8784cb1069117cca
 	sha512sums = 759db11cae26b8228000c98eb7bd21d0a46c964a858d27655f8f09114f5f7cba856623c3cad07424ba360e74144d9c0c050ee7219f8fe530cd9059d9f937f023
 	sha512sums = 0052ff95c0736eaa1f1b0790a65a9a935010b776e0b0d52ecf3ceb2c774277178872da1b6250a9189217fec4b4a64b9a4d30b129cc86c8a963228bba8723e27a
 	sha512sums = f12482139463c6f471b49f789cd7f7e1748ecd06e169e5519edb29d762f456b9050871043336f98595b1cf15d99206bcad41f92a7145beb67c154e2a01e4c740
 	sha512sums = 56089fc612978e5f08c9745fb8a495eca719e744f99a711e7e1d0c5a3874f946da3d7f4174b340160bf8160a35bc2aa903fa64a3ba5bcc76088fdd407a97a10d
 	sha512sums = 6970261c24d8056b001f4ff308af7b9be67ef638be28f54f7c08ee4bed9ad895145a6cedf9a3cbda61b023104c50a6758a8bfcc8bc40097a298b98b60b1ffee7
 	sha512sums = 38ed719345ec0d5156a8fd9f2e4fadd836ae2179d5737c4b434b5062e8a7333d1c1fe4a89dada673ae4ae5d70cc1879bd8d84831edc178f08ab72117be432848
-	sha512sums = d5014d0e2392d7d192985593e0676969171762beb09c70aa5d259d3ba9549305769a6b21d3ecb4971e9fb5e188b2bc39dcc6e940d4363362550f560b51994747
+	sha512sums = 5a4f6e09679399a6d11118ca1d6b9fc3b7e26594d285a264ea730062356c89ab5904e59c8465f90e6d901c134c8a91eb3cf123cae801d41a4b50ea0a12e832ce
 	sha512sums = 09acb1f4a7fb04fda120eda79ee847f285a421bc5bf5c3d42c78767f01f2051984b928019707c7c59e48e87728ab45ee2a98ff7ccee6b4e14bfdff93cd1106f0
 	sha512sums = fdc047aadc1cb947209d7ae999d8a7f5f10ae46bf71687080bc13bc3082cc5166bbbe88c8f506b78adb5d772f5366ec671b04a2f761e7d7f249ebe5726681e30
 
