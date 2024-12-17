@@ -1,6 +1,6 @@
 pkgbase = bitwarden
 	pkgdesc = A secure and free password manager for all of your devices
-	pkgver = 2024.12.0
+	pkgver = 2024.12.1
 	pkgrel = 1
 	url = https://github.com/bitwarden/clients/tree/master/apps/desktop
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = bitwarden
 	depends = libxss
 	depends = libnss_nis
 	depends = argon2
-	source = bitwarden::git+https://github.com/bitwarden/clients.git#tag=desktop-v2024.12.0
+	source = bitwarden::git+https://github.com/bitwarden/clients.git#tag=desktop-v2024.12.1
 	source = messaging.main.ts.patch
 	source = nativelib.patch
 	source = native-messaging.main.ts.patch
@@ -32,7 +32,7 @@ pkgbase = bitwarden
 	source = remove-unnecessary-deps.patch
 	source = bitwarden.sh
 	source = bitwarden.desktop
-	sha512sums = 499d113b2319730207c2bf8748d92ddee154f1375673d23e0856cfa25f7e621f3b72c8db966b3e2e316b98b89766d22c93876ed6b98f400b8784cb1069117cca
+	sha512sums = 6a9546930e3a738cb282be8dea7bcc0632dbc5d67fa3c01e85d2682b8fe43a80a40ca49b0bd04c245bfc7961e5fcaa7b8155a7557203e5c3746215e99004d26b
 	sha512sums = 759db11cae26b8228000c98eb7bd21d0a46c964a858d27655f8f09114f5f7cba856623c3cad07424ba360e74144d9c0c050ee7219f8fe530cd9059d9f937f023
 	sha512sums = 0052ff95c0736eaa1f1b0790a65a9a935010b776e0b0d52ecf3ceb2c774277178872da1b6250a9189217fec4b4a64b9a4d30b129cc86c8a963228bba8723e27a
 	sha512sums = f12482139463c6f471b49f789cd7f7e1748ecd06e169e5519edb29d762f456b9050871043336f98595b1cf15d99206bcad41f92a7145beb67c154e2a01e4c740
