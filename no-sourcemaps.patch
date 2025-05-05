@@ -1,9 +1,9 @@
---- clients/tsconfig.json.old	2023-04-26 13:30:57.000000000 +0200
-+++ clients/tsconfig.json	2023-04-26 20:15:39.879489082 +0200
-@@ -6,7 +6,7 @@
+--- clients/tsconfig.json.orig	2025-05-05 19:11:48.113511178 +0600
++++ clients/tsconfig.json	2025-05-05 19:11:56.185838097 +0600
+@@ -7,7 +7,7 @@
      "target": "ES2016",
      "module": "ES2020",
-     "lib": ["es5", "es6", "es7", "dom", "ES2021"],
+     "lib": ["es5", "es6", "es7", "dom", "ES2021", "ESNext.Disposable"],
 -    "sourceMap": true,
 +    "sourceMap": false,
      "allowSyntheticDefaultImports": true,
